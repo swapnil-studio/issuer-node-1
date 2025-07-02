@@ -5,7 +5,6 @@ WORKDIR /app
 RUN apk add --update nodejs npm
 RUN apk add --update apache2-utils
 
-
 COPY package.json package-lock.json ./
 
 RUN npm install

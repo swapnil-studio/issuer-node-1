@@ -13,7 +13,7 @@ services:
       - ./scripts/sql:/docker-entrypoint-initdb.d:ro
       - postgres-data:/var/lib/postgresql/data
     healthcheck:
-      test: [ "CMD-SHELL", "pg_isready" ]
+      test: ["CMD-SHELL", "pg_isready"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -29,7 +29,7 @@ services:
     ports:
       - "5435:5435"
     healthcheck:
-      test: [ "CMD-SHELL", "pg_isready" ]
+      test: ["CMD-SHELL", "pg_isready"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -37,7 +37,7 @@ services:
   test_local_files_apache:
     image: httpd:2.4-alpine
     ports:
-      - '8080:80'
+      - "8081:80"
     volumes:
       - ./httpd-test/httpd.conf:/usr/local/apache2/conf/httpd.conf
       - ./test_data/schema:/usr/local/apache2/htdocs:ro
@@ -46,7 +46,7 @@ services:
     ports:
       - "6379:6379"
     healthcheck:
-      test: [ "CMD", "redis-cli", "-p", "6379", "ping" ]
+      test: ["CMD", "redis-cli", "-p", "6379", "ping"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -93,7 +93,7 @@ services:
 
 networks:
   default:
-      name: issuer-network
+    name: issuer-network
 
 volumes:
   postgres-data:
